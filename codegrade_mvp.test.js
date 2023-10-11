@@ -4,6 +4,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { setupServer, getHandlers } from './backend/mock-server'
 import App, { resetStore } from './frontend/components/App'
 
+
 jest.setTimeout(750) // default 5000 too long for Codegrade
 const waitForOptions = { timeout: 150 }
 const queryOptions = { exact: false }
@@ -234,6 +235,7 @@ describe('Advanced State Sprint Challenge Submission', () => {
       await screen.findByText('Congrats: "foobarbaz?" is a great question!', queryOptions, waitForOptions)
       fireEvent.click(quizLink())
       await screen.findByText(WhatIsClosure, queryOptions, waitForOptions)
+      screen.getByText(ThatIsCorrect, queryOptions)
       let answerA = screen.queryByText(AFunction, queryOptions)
       fireEvent.click(answerA.querySelector('button'))
       fireEvent.click(submitAnswerBtn())
