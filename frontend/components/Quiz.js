@@ -4,13 +4,11 @@ import { fetchQuiz, postAnswer, selectAnswer } from '../state/action-creators';
 import { useEffect } from 'react';
 
 function Quiz(props) {
-  console.log('Quiz component rendered with props:', props);
   const { quiz, fetchQuiz, postAnswer, selectAnswer } = props;
 
   useEffect(() => {
-    console.log('useEffect called with quiz:', props.quiz);
     if (!quiz) fetchQuiz();
-  }, [fetchQuiz]);
+  }, []);
   
 
   const handleAnswerClick = (answerId) => {
@@ -18,16 +16,9 @@ function Quiz(props) {
   };
   
   const handleAnswerSubmit = () => {
-    console.log('Quiz ID:', props.quiz);
     postAnswer(quiz.quiz_id, props.selectedAnswer);
+    fetchQuiz();
   };
-  
-  useEffect(() => {
-    if (!quiz) {
-      fetchQuiz();
-    } else {
-    }
-  }, [fetchQuiz, quiz]);
 
   return (
     <div id="wrapper">

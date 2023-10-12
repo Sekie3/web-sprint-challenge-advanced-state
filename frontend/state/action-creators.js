@@ -62,7 +62,6 @@ export function postAnswer(quizId, answerId) {
         } else {
           dispatch({ type: SET_INFO_MESSAGE, payload: "What a shame! That was the incorrect answer" });
         }
-        dispatch(fetchQuiz());
       }
     } catch (error) {
       console.log("Answer ID posted:", answerId, "quiz id", quizId)
